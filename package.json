@@ -1,0 +1,16 @@
+{
+  "name": "minecraft-bot",
+  "version": "1.0.0",
+  "description": "Minecraft bot for jonarchy.com",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mineflayer": "^4.37.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
