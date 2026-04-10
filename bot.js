@@ -75,7 +75,7 @@ const express = require("express");
       if (lower.includes('joined the game')) {
         const player = msg.split(' ')[0];
         setTimeout(() => {
-          bot.chat(`Welcome ${player}! 👋`);
+          bot.chat(`Welcome ${player}!`);
         }, 2000);
       }
     });
@@ -104,9 +104,9 @@ const express = require("express");
     // Advertise links every 5 minutes
     setInterval(() => {
       if (!bot.entity) return;
-      bot.chat('https://www.youtube.com/@DeathVoxel');
+      bot.chat(' Sub to my YT Channel to GET FREE KITS : https://www.youtube.com/@DeathVoxel');
       setTimeout(() => {
-        bot.chat('jonarchyshop.weebly.com');
+        bot.chat('GET KITS FOR CHEAP PRICES ON jonarchyshop.weebly.com');
       }, 3000);
     }, 5 * 60 * 1000);
   }
