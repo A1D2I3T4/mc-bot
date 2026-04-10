@@ -105,11 +105,6 @@ function createBot() {
         seenPlayers.add(player);
       }
 
-      // Rare event (10%)
-      if (Math.random() < 0.1) {
-        message = `🌌 ${player} has triggered a rare event...`;
-      }
-
       // Instant send ⚡
       bot.chat(message);
     }
@@ -139,9 +134,9 @@ function createBot() {
   // Advertisements
   setInterval(() => {
     if (!bot.entity) return;
-    bot.chat('https://www.youtube.com/@DeathVoxel');
+    bot.chat(' Sub to this Channel on YT and GET FREE KITS: https://www.youtube.com/@DeathVoxel');
     setTimeout(() => {
-      bot.chat('jonarchyshop.weebly.com');
+      bot.chat('SHOP CHEAP KITS ON: jonarchyshop.weebly.com');
     }, 3000);
   }, 5 * 60 * 1000);
 }
