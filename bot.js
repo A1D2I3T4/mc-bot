@@ -2,9 +2,34 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Web server (keep-alive ping)
+// 💬 Chat storage
+let chatLog = [];
+
+// 🌐 Web server (dashboard instead of plain text)
 app.get("/", (req, res) => {
-  res.send("🤖 Minecraft Bot is alive and running!");
+  const players = Object.keys(currentBot?.players || {});
+
+  res.send(`
+    <html>
+      <head>
+        <title>Bot Dashboard</title>
+        <meta http-equiv="refresh" content="2">
+      </head>
+      <body style="background:black; color:lime; font-family:monospace;">
+        <h1>🤖 Live Chat</h1>
+        <pre>${chatLog.join("\n")}</pre>
+
+        <h2>👥 Players Online</h2>
+        <pre>${players.join("\n")}</pre>
+      </body>
+    </html>
+  `);
+});
+
+// 👥 Players API
+app.get("/players", (req, res) => {
+  const players = Object.keys(currentBot?.players || {});
+  res.json(players);
 });
 
 app.listen(PORT, "0.0.0.0", () => {
@@ -15,6 +40,8 @@ app.listen(PORT, "0.0.0.0", () => {
 const mineflayer = require('mineflayer');
 const PASSWORD = '20112011adi';
 
+let currentBot = null;
+
 function createBot() {
   console.log("🚀 Starting bot...");
 
@@ -24,6 +51,8 @@ function createBot() {
     username: 'DeathVoxelBOT',
     version: false
   });
+
+  currentBot = bot; // 🔥 important for web access
 
   let selectedAccount = false;
   let registered = false;
@@ -65,13 +94,17 @@ function createBot() {
 
   bot.on('messagestr', (msg) => {
     console.log("📩", msg);
+
+    // 💬 STORE CHAT
+    chatLog.push(msg);
+    if (chatLog.length > 50) chatLog.shift();
+
     const lower = msg.toLowerCase();
 
     // Select NON-premium account
     if (lower.includes('premium account') && !selectedAccount) {
       selectedAccount = true;
       setTimeout(() => {
-        console.log('👉 Selecting NON-premium...');
         bot.chat('/nlogin click notification 1 2');
       }, 2000);
     }
@@ -79,14 +112,12 @@ function createBot() {
     // Register
     if (lower.includes('/register') && !registered) {
       registered = true;
-      console.log('📝 Registering...');
       bot.chat(`/register ${PASSWORD} ${PASSWORD}`);
     }
 
     // Login
     if (lower.includes('/login') && !logged && !lower.includes('success')) {
       logged = true;
-      console.log('🔑 Logging in...');
       setTimeout(() => {
         bot.chat(`/login ${PASSWORD}`);
       }, 2000);
@@ -97,18 +128,16 @@ function createBot() {
       console.log('🎉 Logged in successfully!');
     }
 
-    // === ADVANCED GREETING (NO DELAY) ===
+    // === GREETING SYSTEM ===
     if (lower.includes('joined the game')) {
       const player = msg.split(' ')[0];
       const now = Date.now();
 
-      // Cooldown (anti-spam)
       if (now - lastGreet < 3000) return;
       lastGreet = now;
 
       let message;
 
-      // Returning player detection
       if (seenPlayers.has(player)) {
         message = `👁 ${player}... you returned.`;
       } else {
@@ -117,7 +146,6 @@ function createBot() {
         seenPlayers.add(player);
       }
 
-      // Instant send ⚡
       bot.chat(message);
     }
   });
@@ -155,4 +183,3 @@ function createBot() {
 
 // Start bot
 createBot();
-  
