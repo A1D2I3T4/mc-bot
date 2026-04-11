@@ -31,18 +31,18 @@ function createBot() {
 
   // === GREETING SYSTEM ===
   const greetings = [
-    "{player}..... Sub to DeathVoxel on Youtube!"
-    " Found your stash {player}... just kidding!"
-    " A player joined! Who is it? It's {player}⚡⚡"
-    " Meet {player} ⚡ !!! Be friendly!"
-    " Make space for ⚡ {player}!"
-    " I notice a player count increase:⚡ {player} came!!!"
-    "⚡ {player} has come! beware!"
-    " Everyone meet the KING: {player}!!!"
-    " ⚡ Welcome {player} to Jonarchy!!!! ⚡ "
-    "oh! {player} came and I didn't even notice! Sorry :)"
-    " :::::: {player} :::::: logged in! Welcome!" 
-    " Say hello to {player}!!. Make him feel comfortable :)"
+    "{player}..... Sub to DeathVoxel on Youtube!",
+    " Found your stash {player}... just kidding!",
+    " A player joined! Who is it? It's {player}⚡⚡",
+    " Meet {player} ⚡ !!! Be friendly!",
+    " Make space for ⚡ {player}!",
+    " I notice a player count increase:⚡ {player} came!!!",
+    "⚡ {player} has come! beware!",
+    " Everyone meet the KING: {player}!!!",
+    " ⚡ Welcome {player} to Jonarchy!!!! ⚡ ",
+    "oh! {player} came and I didn't even notice! Sorry :)",
+    " :::::: {player} :::::: logged in! Welcome!",
+    " Say hello to {player}!!. Make him feel comfortable :)",
     "⚡ Welcome, {player}. The server watches.",
     "☠ {player} joined. Chaos level increased.",
     "👁 {player} entered the grid.",
