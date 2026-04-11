@@ -51,7 +51,13 @@ function createBot() {
     username: 'DeathVoxelBOT',
     version: false
   });
-
+bot.on("death", () => {
+  console.log("💀 Bot died... respawning!");
+  
+  setTimeout(() => {
+    bot.respawn();
+  }, 1000); // small delay to avoid bugs
+});
   currentBot = bot; // 🔥 important for web access
 
   let selectedAccount = false;
