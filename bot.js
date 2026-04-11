@@ -32,8 +32,8 @@ function createBot() {
   // === GREETING SYSTEM ===
   const greetings = [
     " Sub to DeathVoxel {player} on Youtube"
-    " Get kits from jonarchyshop.weebly.com, {player}!"
-    " Found your stash {player}, just kidding!"
+    " Get kits from jonarchyshop.weebly.com: {player}!"
+    " Found your stash {player}... just kidding!"
     " A player joined! Who is it? It's {player}⚡⚡"
     " Meet {player} ⚡ !!! Be friendly!"
     " Make space for ⚡ {player}!"
